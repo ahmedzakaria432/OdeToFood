@@ -1,0 +1,54 @@
+@page
+@model OdeToFood.ClientResturantModel
+@{
+    ViewData["Title"] = "ClientResturant";
+}
+
+<h1>ClientResturant</h1>
+<table class="table" id="resturants">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>Location</th>
+            <th>Cusine</th>
+        </tr>
+    </thead>
+</table>
+@section scripts{
+    <environment include="Development">
+        <script src="\node_modules\datatables.net\js\jquery.dataTables.js"></script>
+        <script src="\node_modules\datatables.net-bs4\js\dataTables.bootstrap4.js"></script>
+        <link href="\node_modules\datatables.net-bs4\css\dataTables.bootstrap4.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css" />
+
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+    </environment>
+<script>
+
+
+    $(function ()
+    {
+        let cusines = ["mexican", "italian", "egyptian", "indian"];
+        $.ajax("/api/resturants", { method: "get" })
+            .then(function (response)
+            {
+                console.log(response);
+                $("#resturants").dataTable(
+                    {
+                      
+                   data: response,
+                        columns:[
+                            { "data": "name" },
+                            { "data": "location" },
+                            { "data": "cusine", "render": function (data) { return cusines[data] } }
+                        ]
+
+                    })
+            
+            })
+    })
+    </script>
+}

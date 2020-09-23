@@ -1,0 +1,27 @@
+@page "{ID:int}"
+@model MyApp.Namespace.DetailModel
+@{ ViewData["Title"] = "Details";}
+
+
+<h3 class="thead-light" > Details </h3>
+<table class="table" id="summarytable">
+
+    
+    <tr>
+        <td class="font-weight-bold">ID</td><td>@Model.Resturant.ID</td>
+
+
+
+    </tr>
+        <tr>   <td class="font-weight-bold">Name</td><td>@Model.Resturant.Name</td></tr>
+        <tr><td class="font-weight-bold">Location</td><td>@Model.Resturant.Location</td></tr>
+        <tr>  <td class="font-weight-bold">Cusine </td><td>@Model.Resturant.Cusine</td></tr>
+        <tr><td ><a asp-page="./List" class="btn btn-grey" >Get all Resturants</a></td></tr>
+
+
+    
+
+</table>
+@{await Html.RenderPartialAsync("_summary",Model.Resturant); }
+
+

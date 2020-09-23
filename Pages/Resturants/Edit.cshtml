@@ -1,0 +1,31 @@
+@page
+@model MyApp.Namespace.EditModel
+@{
+    <h1>Edit Resturant</h1>
+<form method="Post" >
+    
+    <div class="form-group">
+        <input type="hidden" asp-for="@Model.ResturantToEdit.ID" value="@Model.ResturantToEdit.ID">
+    </div>
+    <div class="form-group">
+        <label>Resturant Name </label>
+        <input class="form-control" type="text" asp-for="ResturantToEdit.Name" value="@Model.ResturantToEdit.Name">
+        <span class="text-danger" asp-validation-for="@Model.ResturantToEdit.Name"></span>
+    </div>
+    <div class="form-group">
+        <label>Resturant Location </label>
+        <input class="form-control" type="text" asp-for="ResturantToEdit.Location" value="@Model.ResturantToEdit.Location">
+        <span class="text-danger" asp-validation-for="@Model.ResturantToEdit.Location"></span>
+    </div>
+    <div class="form-group">
+    <label>Resturant Cusine </label>
+    <select asp-for="ResturantToEdit.Cusine" asp-items=" Model.cusines" class="form-control"></select>
+</div>
+        <button type="submit"> Save Edit</button>
+
+  
+    </form>
+    @section scripts{
+<partial name="_ValidationScriptsPartial" />
+     }
+}

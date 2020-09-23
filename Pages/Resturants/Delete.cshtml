@@ -1,0 +1,21 @@
+@page "{id:int}"
+@model OdeToFood.DeleteModel
+@{
+   
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div class="alert alert-danger"> Are you sure you want to delete @Model.resturant.Name ?</div>
+<form method="post" >
+    <button type="submit" class="btn btn-danger" >Yes!</button>
+    <a asp-page="List" class="btn btn-light"> Cancel</a>
+</form>
+</body>
+</html>

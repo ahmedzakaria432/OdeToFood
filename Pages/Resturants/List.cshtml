@@ -1,0 +1,75 @@
+
+@page
+@model MyApp.Namespace.ListModel
+@{
+}
+
+
+<h1>Resturants</h1>
+@if (Model.Message != null)
+{
+    <div class="alert alert-info"> @Model.Message</div>
+
+}
+<div class="container">
+    <form method="GET">
+        <div class="form-sm">
+            <input type="search" asp-for="searchedTerm" class="form-control-sm" value="@Model.searchedTerm" />
+            <span class="input-group-btn col-md-6">
+
+                <button type="submit" class="btn btn-grey">
+                    <i class="">search</i>
+                </button>
+
+            </span>
+        </div>
+    </form>
+
+
+
+
+    <table class="table table-hover">
+        @*<thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Cusine</th>
+                </tr>
+            </thead>*@
+
+        @foreach (var item in Model.Resturants)
+        {
+            <partial name="_summary" model="item" />
+
+            <!--
+                <tr>
+
+                <td>@item.Name</td>
+                <td>@item.Location</td>
+                <td>@item.Cusine</td>
+
+
+
+                <td><a class="btn btn-lg" asp-page="./Detail" asp-route-Id="@item.ID"><i class="fa fa-search-plus"></i></a></td>
+                <td><a class="btn btn-lg" asp-page="./Edit" asp-route-ID="@item.ID"><i class="fas fa-edit"></i></a></td>
+                <td><a class="btn btn-lg" asp-page="./Delete" asp-route-id="@item.ID"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>-->
+
+
+        }
+    </table>
+
+
+
+    <a asp-page="./AddResturanr" class=" btn btn-grey"> Add Resturant</a>
+  
+</div>
+
+
+@*<script defer>
+    let MessageElement = document.getElementById("messageConfig");
+    MessageElement.innerHTML="@Model.Message";
+
+
+</script>*@
+

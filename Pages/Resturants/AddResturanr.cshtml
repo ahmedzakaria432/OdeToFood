@@ -1,0 +1,37 @@
+@page
+@model OdeToFood.AddResturanrModel
+@{
+    ViewData["Title"] = "AddResturanr";
+}
+
+<h1>Add Resturanr</h1>
+@if (Model.Message != null)
+{
+    <span class="text-danger">@Model.Message</span>
+}
+<form method="post">
+    <div class="container">
+        <div class="form-group">
+
+            <label class="col-form-label" asp-for="ResturantToAdd.Name"></label>
+            <input class="form-control" asp-for="ResturantToAdd.Name" />
+            <span asp-validation-for="ResturantToAdd.Name" class="text-danger d-block"></span>
+
+            <label class="col-form-label" asp-for="ResturantToAdd.Location"></label>
+            <input class="form-control" asp-for="ResturantToAdd.Location" />
+            <span asp-validation-for="ResturantToAdd.Location" class="text-danger d-block"></span>
+
+            <label class="col-form-label" asp-for="ResturantToAdd.Cusine"></label>
+            <select asp-for="ResturantToAdd.Cusine" asp-items="Model.Cusines" class="custom-select"></select>
+
+
+            <input type="submit" class="btn btn-primary" />
+        </div>
+        <div> hello ahmed</div>
+
+    </div>
+
+</form>
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
